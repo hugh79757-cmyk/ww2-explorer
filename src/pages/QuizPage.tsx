@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { questions } from '../data/quizData'
+import { quizQuestions as questions } from '../data/quizData';
 
 export default function QuizPage() {
   const [current, setCurrent] = useState(0)
