@@ -12,7 +12,7 @@ export default function QuizPage() {
   const handleAnswer = (idx: number) => {
     if (selected !== null) return
     setSelected(idx)
-    if (idx === q.answer) setScore(s => s + 1)
+    if (idx === q.correct) setScore(s => s + 1)
   }
 
   const next = () => {
@@ -63,8 +63,8 @@ export default function QuizPage() {
             let bg = 'var(--bg-secondary)'
             let border = 'var(--border-color)'
             if (selected !== null) {
-              if (i === q.answer) { bg = '#16a34a33'; border = '#16a34a' }
-              else if (i === selected && i !== q.answer) { bg = '#dc262633'; border = '#dc2626' }
+              if (i === q.correct) { bg = '#16a34a33'; border = '#16a34a' }
+              else if (i === selected && i !== q.correct) { bg = '#dc262633'; border = '#dc2626' }
             }
             return (
               <button key={i} onClick={() => handleAnswer(i)} style={{
@@ -81,8 +81,8 @@ export default function QuizPage() {
       </div>
 
       {selected !== null && (
-        <div style={{ background: selected === q.answer ? '#16a34a22' : '#dc262622', border: `1px solid ${selected === q.answer ? '#16a34a' : '#dc2626'}`, borderRadius: '10px', padding: '14px', marginBottom: '16px' }}>
-          <p style={{ fontSize: '13px', fontWeight: 'bold', marginBottom: '6px' }}>{selected === q.answer ? '✅ 回答正确！' : '❌ 回答错误'}</p>
+        <div style={{ background: selected === q.correct ? '#16a34a22' : '#dc262622', border: `1px solid ${selected === q.correct ? '#16a34a' : '#dc2626'}`, borderRadius: '10px', padding: '14px', marginBottom: '16px' }}>
+          <p style={{ fontSize: '13px', fontWeight: 'bold', marginBottom: '6px' }}>{selected === q.correct ? '✅ 回答正确！' : '❌ 回答错误'}</p>
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{q.explanation}</p>
         </div>
       )}
